@@ -3,6 +3,9 @@ import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@a
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 
 import {
   PERFECT_SCROLLBAR_CONFIG,
@@ -45,6 +48,15 @@ import {
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { AccountsComponent } from './views/accounts/accounts.component';
+import { ProfileComponent } from './views/profile/profile.component';
+import { CapstoneTitleComponent } from './views/capstone-title/capstone-title.component';
+import { AdviserPanelManagementComponent } from './views/adviser-panel-management/adviser-panel-management.component';
+import { ReportComponent } from './views/report/report.component';
+import { ContentManagementComponent } from './views/content-management/content-management.component';
+import { AddEntryComponent } from './views/capstone-title/add-entry/add-entry.component';
+import { ViewEntryComponent } from './views/capstone-title/view-entry/view-entry.component';
+
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -57,7 +69,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS],
+  declarations: [AppComponent, ...APP_CONTAINERS, AccountsComponent, ProfileComponent, CapstoneTitleComponent, AdviserPanelManagementComponent, ReportComponent, ContentManagementComponent, AddEntryComponent, ViewEntryComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -74,9 +86,12 @@ const APP_CONTAINERS = [
     NavModule,
     ButtonModule,
     FormModule,
+    FormsModule,
+    NgbDatepicker,
     UtilitiesModule,
     ButtonGroupModule,
     ReactiveFormsModule,
+    HttpClientModule,
     SidebarModule,
     SharedModule,
     TabsModule,

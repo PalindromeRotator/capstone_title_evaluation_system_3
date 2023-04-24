@@ -1,0 +1,20 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Group Name</th>
+            <th scope="col">Section</th>
+            <th scope="col">Grade</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let titleArrayData of titleArray">
+            <th scope="row">{{titleArrayData.group_name}}</th>
+            <td>{{titleArrayData.section}}</td>
+            <td>{{titleArrayData.grades}}</td>
+            <td>
+                <button class="btn btn-primary" (click)="viewEntry(titleArrayData)">View group</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

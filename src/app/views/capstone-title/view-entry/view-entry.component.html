@@ -1,0 +1,225 @@
+<div class="row">
+    <div class="col">
+        <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Group Name</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder"
+                [(ngModel)]="titleObject.group_name">
+        </div>
+    </div>
+    <div class="col">
+        <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Section</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder"
+                [(ngModel)]="titleObject.section">
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Adviser and Panels</label>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <p></p>
+                    <div class="row">
+                        <div class="col">
+                            <span class="badge bg-secondary rounded-pill">
+                                Adviser
+                            </span>
+                        </div>
+                        <div class="col">
+                            <span class="badge bg-danger rounded-pill">
+                                remove
+                            </span>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center"
+                    *ngIf="panelsArray.length <= 0">
+                    <p>No Adviser and panels yet</p>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center"
+                    *ngFor="let data of panelsArray">
+                    <p>{{data.name}}</p>
+                    <div class="row">
+                        <div class="col">
+                            <span class="badge bg-primary rounded-pill">
+                                Panel
+                            </span>
+                        </div>
+                        <div class="col">
+                            <span class="badge bg-danger rounded-pill">
+                                remove
+                            </span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col" style="width:50%;">
+        <div class="mb-3" style="padding: 5px; height: 250px; overflow-y: auto;">
+            <label for="formGroupExampleInput" class="form-label">Comment</label>
+            <hr>
+            <div class="input-group">
+                <span class="input-group-text">Write comment</span>
+                <textarea class="form-control" aria-label="With textarea"></textarea>
+            </div>
+            <br>
+            <button class="btn btn-primary">Send</button>
+            <hr>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div style="width: 20%;">
+                        <p style="word-wrap: break-word;">
+                            <b> My Full Name Please</b>
+                        </p>
+                    </div>
+                    <div style="width: 50%;">
+                        <p style="word-wrap: break-word;">
+                            asdsasdadasdasdasdasdasddsdasddsadasdasdsaddasdasdsadasdasdasdadsa
+                        </p>
+                    </div>
+                    <span class="input-group-text"><i>current date and time</i></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div style="width: 20%;">
+                        <p style="word-wrap: break-word;">
+                            <b> My Full Name Please</b>
+                        </p>
+                    </div>
+                    <div style="width: 50%;">
+                        <p style="word-wrap: break-word;">
+                            asdsasdadasdasdasdasdasddsdasddsadasdasdsaddasdasdsadasdasdasdadsa
+                        </p>
+                    </div>
+                    <span class="input-group-text"><i>current date and time</i></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div style="width: 20%;">
+                        <p style="word-wrap: break-word;">
+                            <b> My Full Name Please</b>
+                        </p>
+                    </div>
+                    <div style="width: 50%;">
+                        <p style="word-wrap: break-word;">
+                            asdsasdadasdasdasdasdasddsdasddsadasdasdsaddasdasdsadasdasdasdadsa
+                        </p>
+                    </div>
+                    <span class="input-group-text"><i>current date and time</i></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col" style="width:50%;">
+        <div class="mb-3" style="padding: 5px; height: 250px; overflow-y: auto;">
+            <label for="formGroupExampleInput" class="form-label">Grade</label>
+            <hr>
+            <div class="input-group">
+                <span class="input-group-text">Write grade</span>
+                <textarea class="form-control" aria-label="With textarea"></textarea>
+            </div>
+            <br>
+            <button class="btn btn-primary">Send</button>
+            <hr>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div style="width: 20%;">
+                        <p style="word-wrap: break-word;">
+                            <b> My Full Name Please</b>
+                        </p>
+                    </div>
+                    <div style="width: 50%;">
+                        <p style="word-wrap: break-word;">
+                            100
+                        </p>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div style="width: 20%;">
+                        <p style="word-wrap: break-word;">
+                            <b> My Full Name Please</b>
+                        </p>
+                    </div>
+                    <div style="width: 50%;">
+                        <p style="word-wrap: break-word;">
+                            100
+                        </p>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div style="width: 20%;">
+                        <p style="word-wrap: break-word;">
+                            <b> My Full Name Please</b>
+                        </p>
+                    </div>
+                    <div style="width: 50%;">
+                        <p style="word-wrap: break-word;">
+                            100
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="col">
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Titles</label>
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center"
+                *ngIf="titlesArray.length <= 0">
+                No Titles Available
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center"
+                *ngFor="let data of titlesArray">
+                {{data.title}}
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="inputGroupFile02">
+                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary"> Download</button>
+                    </div>
+                </div>
+            </li>
+            <!-- <li class="list-group-item d-flex justify-content-between align-items-center">
+                No file
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="inputGroupFile02">
+                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary"> Download</button>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                No file
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="inputGroupFile02">
+                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary"> Download</button>
+                    </div>
+                </div>
+            </li> -->
+        </ul>
+    </div>
+</div>
+<div class="mb-3">
+    <button class="btn btn-success"> Save Changes</button>
+</div>

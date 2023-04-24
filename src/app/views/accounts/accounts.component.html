@@ -1,0 +1,32 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">User Type</th>
+            <th scope="col">Assign as coordinator</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let userData of users; let i = index">
+            <th scope="row">
+                {{userData.name}}</th>
+            <td>
+                {{userData.email}}</td>
+            <td>
+                {{userData.user_type}}</td>
+            <td>
+                <button class="btn btn-primary" style="margin-right: 5px;"
+                    *ngIf="!userData.is_verified && user_type ==='capstone_coordinator'"
+                    (click)="acceptUser(userData.id)">Accept</button>
+                <select aria-label="Default select example" cSelect (change)="assignAsCoordinator(userData.id,$event)"
+                    *ngIf="userData.is_verified && user_type ==='admin'">
+                    <option default *ngIf="!userData.section || userData.section === ''">Select section</option>
+                    <option value="1" *ngFor="let sectionArrayData of sectionArray">{{sectionArrayData}}</option>
+                </select>
+
+                <!-- <button class="btn btn-danger" (click)="rejectUser(userData.id)">Deny</button> -->
+            </td>
+        </tr>
+    </tbody>
+</table>

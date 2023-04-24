@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col">
+        <input type="text" class="form-control" placeholder="Full Name" aria-label="Full Name"
+            [(ngModel)]="userData.name">
+    </div>
+    <div class="col">
+        <input type="email" class="form-control" placeholder="Email" aria-label="Email" [(ngModel)]="userData.email">
+    </div>
+    <div class="col" *ngIf="user_type === 'capstone_group' || user_type === 'capstone_coordinator'">
+        <input type="text" class="form-control" placeholder="Section" aria-label="Section"
+            [(ngModel)]="userData.section">
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col">
+        <button class="btn btn-primary" (click)="saveChanges()"> Save Changes</button>
+    </div>
+</div>

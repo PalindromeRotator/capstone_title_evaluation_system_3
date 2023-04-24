@@ -4,35 +4,69 @@
       <c-col lg="7" md="9" xl="6">
         <c-card class="mx-4">
           <c-card-body class="p-4">
-            <form cForm>
-              <h1>Register</h1>
-              <p class="text-medium-emphasis">Create your account</p>
-              <c-input-group class="mb-3">
-                <span cInputGroupText>
-                  <svg cIcon name="cilUser"></svg>
-                </span>
-                <input autoComplete="name" cFormControl placeholder="Username" />
-              </c-input-group>
-              <c-input-group class="mb-3">
-                <span cInputGroupText>@</span>
-                <input autoComplete="email" cFormControl placeholder="Email" />
-              </c-input-group>
-              <c-input-group class="mb-3">
-                <span cInputGroupText>
-                  <svg cIcon name="cilLockLocked"></svg>
-                </span>
-                <input autoComplete="new-password" cFormControl placeholder="Password" type="password" />
-              </c-input-group>
-              <c-input-group class="mb-4">
-                <span cInputGroupText>
-                  <svg cIcon name="cilLockLocked"></svg>
-                </span>
-                <input autoComplete="new-password" cFormControl placeholder="Repeat password" type="password" />
-              </c-input-group>
-              <div class="d-grid">
-                <button cButton color="success">Create Account</button>
-              </div>
-            </form>
+            <h1>Register</h1>
+            <p class="text-medium-emphasis">Create your account</p>
+            <!-- <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-coreui-toggle="dropdown"
+                aria-expanded="false">
+                {{userData.user_type}}
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Faculty</a></li>
+                <li><a class="dropdown-item" href="#">Capstone Group</a></li>
+                <li><a class="dropdown-item" href="#" (click)="selectUserType('faculty')">Faculty</a></li>
+                <li><a class="dropdown-item" href="#" (click)="selectUserType('capstone_group')">Capstone Group</a></li>
+              </ul>
+            </div> -->
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                [(ngModel)]="userData.user_type" (change)="onItemChange($event)" value="faculty">
+              <label class="form-check-label" for="flexRadioDefault1">
+                Faculty
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked
+                [(ngModel)]="userData.user_type" (change)="onItemChange($event)" value="capstone_group">
+              <label class="form-check-label" for="flexRadioDefault2">
+                Capstone Group
+              </label>
+            </div>
+            <br>
+            <c-input-group class="mb-3">
+              <span cInputGroupText>
+                <svg cIcon name="cilUser"></svg>
+              </span>
+              <input cFormControl autoComplete="name" placeholder="Group name" [(ngModel)]="userData.name"
+                *ngIf="userData.user_type === 'capstone_group'" />
+              <input cFormControl autoComplete="name" placeholder="Full name" [(ngModel)]="userData.name"
+                *ngIf="userData.user_type === 'faculty'" />
+            </c-input-group>
+            <c-input-group class="mb-3">
+              <span cInputGroupText>@</span>
+              <input cFormControl autoComplete="email" placeholder="Email" [(ngModel)]="userData.email" />
+            </c-input-group>
+            <c-input-group class="mb-3" *ngIf="userData.user_type === 'capstone_group'">
+              <span cInputGroupText>@</span>
+              <input cFormControl autoComplete="section" placeholder="Section" [(ngModel)]="userData.section" />
+            </c-input-group>
+            <c-input-group class="mb-3">
+              <span cInputGroupText>
+                <svg cIcon name="cilLockLocked"></svg>
+              </span>
+              <input cFormControl autocomplete="false" placeholder="Password" type="password"
+                [(ngModel)]="userData.password" />
+            </c-input-group>
+            <c-input-group class="mb-4">
+              <span cInputGroupText>
+                <svg cIcon name="cilLockLocked"></svg>
+              </span>
+              <input cFormControl autocomplete="false" placeholder="Repeat password" type="password"
+                [(ngModel)]="userData.confirmPassword" />
+            </c-input-group>
+            <div class="d-grid">
+              <button cButton color="success" (click)="registerUser()">Create Account</button>
+            </div>
           </c-card-body>
         </c-card>
       </c-col>

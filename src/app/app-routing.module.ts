@@ -6,11 +6,19 @@ import { Page404Component } from './views/pages/page404/page404.component';
 import { Page500Component } from './views/pages/page500/page500.component';
 import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
+import { AccountsComponent } from './views/accounts/accounts.component';
+import { ProfileComponent } from './views/profile/profile.component';
+import { CapstoneTitleComponent } from './views/capstone-title/capstone-title.component';
+import { AdviserPanelManagementComponent } from './views/adviser-panel-management/adviser-panel-management.component';
+import { ReportComponent } from './views/report/report.component';
+import { ContentManagementComponent } from './views/content-management/content-management.component';
+import { AddEntryComponent } from './views/capstone-title/add-entry/add-entry.component';
+import { ViewEntryComponent } from './views/capstone-title/view-entry/view-entry.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -70,6 +78,46 @@ const routes: Routes = [
         loadChildren: () =>
           import('./views/pages/pages.module').then((m) => m.PagesModule)
       },
+      {
+        path: 'profile',
+        title: 'Profile',
+        component: ProfileComponent,
+      },
+      {
+        path: 'accounts',
+        title: 'Accounts',
+        component: AccountsComponent,
+      },
+      {
+        path: 'capstone-titles',
+        title: 'Capstone Titles',
+        component: CapstoneTitleComponent,
+      },
+      {
+        path: 'panel-adviser',
+        title: 'Panels & Adviser',
+        component: AdviserPanelManagementComponent,
+      },
+      {
+        path: 'report',
+        title: 'Reports',
+        component: ReportComponent,
+      },
+      {
+        path: 'content-management',
+        title: 'Content Management',
+        component: ContentManagementComponent
+      },
+      {
+        path: 'add-entry',
+        title: 'Add entry',
+        component: AddEntryComponent
+      },
+      {
+        path: 'view-entry/:titleData',
+        title: 'View entry',
+        component: ViewEntryComponent
+      },
     ]
   },
   {
@@ -100,7 +148,7 @@ const routes: Routes = [
       title: 'Register Page'
     }
   },
-  {path: '**', redirectTo: 'dashboard'}
+  { path: '**', redirectTo: 'dashboard' }
 ];
 
 @NgModule({
