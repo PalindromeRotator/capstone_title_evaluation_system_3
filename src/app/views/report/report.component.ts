@@ -16,6 +16,5 @@ export class ReportComponent {
 
   }
   ngOnInit() {
-    this.titlesService.get
   }
 }
