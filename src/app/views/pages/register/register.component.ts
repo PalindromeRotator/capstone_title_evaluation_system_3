@@ -15,7 +15,9 @@ export class RegisterComponent {
     section: '',
     password: '',
     confirmPassword: '',
+    user_define_id: '',
     user_type: 'capstone_group',
+    expertise: '',
   };
   constructor(private router: Router, private usersService: UsersService) { }
   registerUser(): void {
@@ -26,7 +28,9 @@ export class RegisterComponent {
       password: this.userData.password,
       confirmPassword: this.userData.password,
       user_type: this.userData.user_type,
+      user_define_id: this.userData.user_define_id,
       is_verified: false,
+      expertise: this.userData.expertise,
     };
     if (data.email !== '' && data.password !== '' && data.confirmPassword !== '' && data.name !== '') {
       this.usersService.create(data)

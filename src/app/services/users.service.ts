@@ -36,9 +36,9 @@ export class UsersService {
     return this.http.get(`${baseUrl}/${data.email}/${data.password}`);
   }
 
-  // getById(id: any): Observable<Users> {
-  //   return this.http.get(`${baseUrl}/${id}`)
-  // }
+  getById(id: any): Observable<Users> {
+    return this.http.get(`${baseUrl}/${id}`)
+  }
 
   create(data: any): Observable<any> {
     return this.http.post(baseUrl, data);

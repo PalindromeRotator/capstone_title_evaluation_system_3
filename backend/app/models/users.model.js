@@ -17,6 +17,12 @@ module.exports = (sequelize, Sequelize) => {
         },
         section: {
             type: Sequelize.STRING
+        },
+        user_define_id: {
+            type: Sequelize.STRING
+        },
+        expertise: {
+            type: Sequelize.STRING
         }
     });
 

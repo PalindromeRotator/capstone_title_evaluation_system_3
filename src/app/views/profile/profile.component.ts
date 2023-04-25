@@ -10,14 +10,23 @@ import Swal from 'sweetalert2';
 })
 export class ProfileComponent {
   userData = {
-    name: localStorage.getItem('name'),
-    email: localStorage.getItem('email'),
-    section: localStorage.getItem('section'),
-  }
+    name: '',
+    email: '',
+    section: '',
+    password: '',
+    confirmPassword: '',
+    user_define_id: '',
+    user_type: 'capstone_group',
+    expertise: '',
+  };
   user_type = localStorage.getItem('user_type')
 
   constructor(private usersService: UsersService) {
-
+    this.usersService.getById(localStorage.getItem('uid')).subscribe(
+      response => {
+        console.log(response)
+      }
+    )
   }
 
   ngOnInit() {

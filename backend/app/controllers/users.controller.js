@@ -20,6 +20,8 @@ exports.create = (req, res) => {
         user_type: req.body.user_type,
         is_verified: req.body.is_verified,
         section: req.body.section,
+        user_define_id: req.body.user_define_id,
+        expertise: req.body.expertise,
     };
 
     // Save Tutorial in the database

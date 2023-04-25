@@ -32,10 +32,21 @@
                 Capstone Group
               </label>
             </div>
-            <br>
+            <br><c-input-group class="mb-3" *ngIf="userData.user_type === 'faculty'">
+              <span cInputGroupText>
+                <svg cIcon name="cil-asterisk"></svg>
+              </span>
+              <input cFormControl autoComplete="false" placeholder="ID" [(ngModel)]="userData.user_define_id" />
+            </c-input-group>
+            <c-input-group class="mb-3" *ngIf="userData.user_type === 'faculty'">
+              <span cInputGroupText>
+                <svg cIcon name="cil-asterisk"></svg>
+              </span>
+              <input cFormControl autoComplete="false" placeholder="Expertise" [(ngModel)]="userData.expertise" />
+            </c-input-group>
             <c-input-group class="mb-3">
               <span cInputGroupText>
-                <svg cIcon name="cilUser"></svg>
+                <svg cIcon name="cil-user"></svg>
               </span>
               <input cFormControl autoComplete="name" placeholder="Group name" [(ngModel)]="userData.name"
                 *ngIf="userData.user_type === 'capstone_group'" />
