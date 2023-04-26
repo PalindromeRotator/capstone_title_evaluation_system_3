@@ -8,4 +8,5 @@ export class Users {
     user_define_id?: string;
     is_verified?: boolean;
     expertise?: string;
+    members?: string;
 }

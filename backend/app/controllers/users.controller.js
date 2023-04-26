@@ -22,6 +22,7 @@ exports.create = (req, res) => {
         section: req.body.section,
         user_define_id: req.body.user_define_id,
         expertise: req.body.expertise,
+        members: req.body.expertise,
     };
 
     // Save Tutorial in the database

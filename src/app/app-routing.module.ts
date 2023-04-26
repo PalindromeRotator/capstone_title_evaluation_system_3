@@ -14,6 +14,7 @@ import { ReportComponent } from './views/report/report.component';
 import { ContentManagementComponent } from './views/content-management/content-management.component';
 import { AddEntryComponent } from './views/capstone-title/add-entry/add-entry.component';
 import { ViewEntryComponent } from './views/capstone-title/view-entry/view-entry.component';
+import { AddMembersComponent } from './views/profile/add-members/add-members.component';
 
 const routes: Routes = [
   {
@@ -117,6 +118,11 @@ const routes: Routes = [
         path: 'view-entry/:titleData',
         title: 'View entry',
         component: ViewEntryComponent
+      },
+      {
+        path: 'add-member/:currentMember',
+        title: 'Add entry',
+        component: AddMembersComponent
       },
     ]
   },

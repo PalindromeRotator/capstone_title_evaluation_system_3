@@ -1,3 +1,5 @@
+<h1 class="display-6">User Details</h1>
+<br>
 <div class="row">
     <div class="col">
         <input type="text" class="form-control" placeholder="Full Name" aria-label="Full Name"
@@ -11,13 +13,19 @@
             [(ngModel)]="userData.section">
     </div>
 </div>
+<br>
 <div class="row">
     <div class="col">
         <input type="text" class="form-control" placeholder="User Type" aria-label="Full Name"
-            [(ngModel)]="userData.name">
+            [(ngModel)]="userData.user_type">
     </div>
     <div class="col">
-        <input type="email" class="form-control" placeholder="ID" aria-label="Email" [(ngModel)]="userData.email">
+        <input type="email" class="form-control" placeholder="ID" aria-label="ID" [(ngModel)]="userData.user_define_id"
+            *ngIf="user_type === 'faculty'">"
+    </div>
+    <div class="col">
+        <input type="email" class="form-control" placeholder="Expertise" aria-label="Expertise"
+            [(ngModel)]="userData.user_define_id" *ngIf="user_type === 'faculty'">"
     </div>
 </div>
 <br>
@@ -25,4 +33,40 @@
     <div class="col">
         <button class="btn btn-primary" (click)="saveChanges()"> Save Changes</button>
     </div>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="display-6">Group Members</h1>
+        </div>
+        <div class="col">
+            <button class="btn btn-success" (click)="goToAddComponent()">Add member</button>
+        </div>
+    </div>
+
+    <br>
+    <table class="table table-striped" *ngIf="user_type ==='capstone_group'">
+        <thead>
+            <tr>
+                <th scope="row">Full name</th>
+                <th>Email</th>
+                <th>Program</th>
+                <th>Course</th>
+                <th>Year and Section</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="!memberArray?.length">
+                <td colspan="5">No Members yet</td>
+            </tr>
+            <tr *ngFor="let data of memberArray">
+                <th scope="row">{{data.fullname}}</th>
+                <th>{{data.email}}</th>
+                <th>{{data.program}}</th>
+                <th>{{data.course}}</th>
+                <th>{{data.year_section}}</th>
+            </tr>
+        </tbody>
+    </table>
 </div>

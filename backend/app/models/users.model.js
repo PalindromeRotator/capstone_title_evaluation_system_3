@@ -23,6 +23,9 @@ module.exports = (sequelize, Sequelize) => {
         },
         expertise: {
             type: Sequelize.STRING
+        },
+        members: {
+            type: Sequelize.STRING
         }
     });
 
