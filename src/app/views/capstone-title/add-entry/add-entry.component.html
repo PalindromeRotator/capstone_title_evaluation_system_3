@@ -1,1 +1,16 @@
-<p>add-entry works!</p>
+<h1 class="display-6">Add title</h1>
+<br>
+<div class="row">
+    <div class="col">
+        <input type="text" class="form-control" placeholder="Title" aria-label="Title" [(ngModel)]="titleData.title">
+    </div>
+    <div class="col">
+        <div class="input-group mb-3">
+            <input type="file" class="form-control" id="inputGroupFile02" (change)="onFileSelected($event)">
+            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+        </div>
+    </div>
+</div>
+<div class="mb-3">
+    <button class="btn btn-success" (click)="saveChanges()"> Save Changes</button>
+</div>

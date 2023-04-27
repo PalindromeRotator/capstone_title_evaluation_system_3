@@ -21,6 +21,18 @@ module.exports = (sequelize, Sequelize) => {
         comment: {
             type: Sequelize.STRING
         },
+        user_id: {
+            type: Sequelize.NUMBER
+        },
+        title1_blob: {
+            type: Sequelize.BLOB
+        },
+        title2_blob: {
+            type: Sequelize.BLOB
+        },
+        title3_blob: {
+            type: Sequelize.BLOB
+        }
     });
 
     return Title;

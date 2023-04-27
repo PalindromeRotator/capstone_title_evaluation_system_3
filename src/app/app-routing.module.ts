@@ -15,6 +15,7 @@ import { ContentManagementComponent } from './views/content-management/content-m
 import { AddEntryComponent } from './views/capstone-title/add-entry/add-entry.component';
 import { ViewEntryComponent } from './views/capstone-title/view-entry/view-entry.component';
 import { AddMembersComponent } from './views/profile/add-members/add-members.component';
+import { ViewTitleComponent } from './views/capstone-title/view-title/view-title.component';
 
 const routes: Routes = [
   {
@@ -110,7 +111,7 @@ const routes: Routes = [
         component: ContentManagementComponent
       },
       {
-        path: 'add-entry',
+        path: 'add-entry/:titleData',
         title: 'Add entry',
         component: AddEntryComponent
       },
@@ -123,6 +124,11 @@ const routes: Routes = [
         path: 'add-member/:currentMember',
         title: 'Add entry',
         component: AddMembersComponent
+      },
+      {
+        path: 'view-title/:data/:index',
+        title: 'View entry',
+        component: ViewTitleComponent
       },
     ]
   },

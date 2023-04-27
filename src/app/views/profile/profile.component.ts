@@ -5,6 +5,7 @@ import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
 import { Members } from './members'
 import { Router } from '@angular/router';
+import { TitlesService } from 'src/app/services/titles.service';
 
 @Component({
   selector: 'app-profile',
@@ -24,13 +25,15 @@ export class ProfileComponent {
   };
   memberArray: Array<Members> = []
   user_type = localStorage.getItem('user_type')
-  constructor(private usersService: UsersService, private router: Router) {
+  constructor(private usersService: UsersService, private router: Router, private titlesService: TitlesService) {
     this.usersService.getById(localStorage.getItem('uid')).subscribe(
       response => {
         this.userData = response;
         this.memberArray = JSON.parse(response.members!)
       }
     )
+
+
   }
 
   ngOnInit() {

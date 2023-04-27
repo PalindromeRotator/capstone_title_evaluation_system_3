@@ -21,4 +21,15 @@ export class TitlesService {
   getAll(): Observable<Titles[]> {
     return this.http.get<Titles[]>(baseUrl);
   }
+
+  update(id: any, data: any): Observable<any> {
+    return this.http.put(`${baseUrl}/${id}`, data);
+  }
+
+  getById(id: any): Observable<Titles> {
+    return this.http.get(`${baseUrl}/${id}`)
+  }
+  getByUserId(user_id: any): Observable<Titles> {
+    return this.http.get(`${baseUrl}/user_id/${user_id}`)
+  }
 }

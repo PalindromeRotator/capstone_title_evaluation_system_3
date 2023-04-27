@@ -57,6 +57,7 @@ import { ContentManagementComponent } from './views/content-management/content-m
 import { AddEntryComponent } from './views/capstone-title/add-entry/add-entry.component';
 import { ViewEntryComponent } from './views/capstone-title/view-entry/view-entry.component';
 import { AddMembersComponent } from './views/profile/add-members/add-members.component';
+import { ViewTitleComponent } from './views/capstone-title/view-title/view-title.component';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -70,7 +71,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, AccountsComponent, ProfileComponent, CapstoneTitleComponent, AdviserPanelManagementComponent, ReportComponent, ContentManagementComponent, AddEntryComponent, ViewEntryComponent, AddMembersComponent],
+  declarations: [AppComponent, ...APP_CONTAINERS, AccountsComponent, ProfileComponent, CapstoneTitleComponent, AdviserPanelManagementComponent, ReportComponent, ContentManagementComponent, AddEntryComponent, ViewEntryComponent, AddMembersComponent, ViewTitleComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

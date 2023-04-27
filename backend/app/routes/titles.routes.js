@@ -17,10 +17,11 @@ module.exports = app => {
 
     // // // Retrieve a single Tutorial with id
     // router.get("/:email/:password", users.findOne);
-    // router.get("/:id", users.findById);
+    router.get("/:id", titles.findById);
+    router.get("/user_id/:user_id", titles.findByUserId);
 
     // // // Update a Tutorial with id
-    // router.put("/:id", users.update);
+    router.put("/:id", titles.update);
 
     // // Delete a Tutorial with id
     // router.delete("/:id", tutorials.delete);

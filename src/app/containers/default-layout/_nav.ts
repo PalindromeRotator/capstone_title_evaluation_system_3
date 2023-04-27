@@ -121,18 +121,6 @@ export const navItems: INavData[] = [
     name: 'Capstone Titles',
     url: '/capstone-titles',
     iconComponent: { name: 'cil-align-left' },
-    children: [
-      {
-        name: 'Titles',
-        url: '/capstone-titles',
-        iconComponent: { name: 'cil-align-left' },
-      },
-      {
-        name: 'Add Entry',
-        url: '/add-entry',
-        iconComponent: { name: 'cil-plus' },
-      },
-    ]
   },
   {
     name: 'Content management',

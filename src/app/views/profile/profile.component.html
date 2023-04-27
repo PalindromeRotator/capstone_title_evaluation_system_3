@@ -17,7 +17,7 @@
 <div class="row">
     <div class="col">
         <input type="text" class="form-control" placeholder="User Type" aria-label="Full Name"
-            [(ngModel)]="userData.user_type">
+            [(ngModel)]="userData.user_type" disabled>
     </div>
     <div class="col">
         <input type="email" class="form-control" placeholder="ID" aria-label="ID" [(ngModel)]="userData.user_define_id"
@@ -25,7 +25,7 @@
     </div>
     <div class="col">
         <input type="email" class="form-control" placeholder="Expertise" aria-label="Expertise"
-            [(ngModel)]="userData.user_define_id" *ngIf="user_type === 'faculty'">"
+            [(ngModel)]="userData.expertise" *ngIf="user_type === 'faculty'">"
     </div>
 </div>
 <br>
@@ -35,7 +35,7 @@
     </div>
 </div>
 <br>
-<div class="container">
+<div class="container" *ngIf="user_type === 'capstone_group'">
     <div class="row">
         <div class="col">
             <h1 class="display-6">Group Members</h1>

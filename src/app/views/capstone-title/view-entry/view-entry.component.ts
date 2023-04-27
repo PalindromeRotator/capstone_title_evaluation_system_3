@@ -13,13 +13,15 @@ import { UsersService } from 'src/app/services/users.service';
 export class ViewEntryComponent {
   titleString: string = "";
   titleObject = {
+    "id": 0,
     "group_name": "",
     "section": "",
     "adviser": "",
     "panels": "",
     "titles": "",
     "grades": "",
-    "comments": ""
+    "comments": "",
+    "user_id": "",
   };
   titlesArray: Array<TitlesInterface> = []
   panelsArray: Array<PanelsInterface> = []
