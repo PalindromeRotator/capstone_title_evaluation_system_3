@@ -26,34 +26,43 @@ export class CapstoneTitleComponent {
     "createdAt": "",
     "updatedAt": "",
     "user_id": 0,
+    "coordinator_requests": ""
   };
   titlesArray: Array<TitlesInterface> = []
   panelsArray: Array<PanelsInterface> = []
 
   groupArray: Array<Titles> = []
-
+  allGroupArray: Array<Titles> = []
   constructor(private titlesService: TitlesService, private router: Router) { }
   ngOnInit() {
-    this.titlesService.getByUserId(parseInt(localStorage.getItem('uid')!)).subscribe(
-      response => {
-        this.titleObject = response
-        this.titlesArray = JSON.parse(response.titles!);
-        console.log(JSON.parse(response.titles!))
-      }
-    )
+    if (localStorage.getItem('user_type') === 'capstone_group') {
+      this.titlesService.getByUserId(parseInt(localStorage.getItem('uid')!)).subscribe(
+        response => {
+          this.titleObject = response
+          this.titlesArray = JSON.parse(response.titles!);
+          console.log(JSON.parse(response.titles!))
+        },
+        error => {
+          console.log(error)
+        }
+      )
+    }
+
 
     this.titlesService.getAll().subscribe(
       response => {
         var tempGroup: Titles[] = []
+        var tempGroup2: Titles[] = []
         response.forEach(function (data) {
           JSON.parse(data.panels!).forEach(function (panelData: any) {
             if (panelData.uid === parseInt(localStorage.getItem('uid')!)) {
               tempGroup.push(data)
             }
           })
+
         })
-        console.log(tempGroup)
         this.groupArray = tempGroup
+        this.allGroupArray = response
       }
     )
   }
@@ -113,4 +122,19 @@ export class CapstoneTitleComponent {
   //   console.log(this.capsuleData.blob_file)
   //   console.log(url)
   // }
+
+  request(id: any, currentRequest: any): void {
+    var tempArr = JSON.parse(currentRequest)
+    tempArr.push({ uid: parseInt(localStorage.getItem('uid')!), name: localStorage.getItem('name') })
+    this.titlesService.update(parseInt(id), {
+      requests: JSON.stringify(tempArr)
+    }).subscribe(
+      response => {
+        Swal.fire({
+          icon: 'success',
+          text: 'Request sent to become adviser'
+        })
+      }
+    )
+  }
 }

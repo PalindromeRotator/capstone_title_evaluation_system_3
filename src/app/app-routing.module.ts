@@ -16,6 +16,7 @@ import { AddEntryComponent } from './views/capstone-title/add-entry/add-entry.co
 import { ViewEntryComponent } from './views/capstone-title/view-entry/view-entry.component';
 import { AddMembersComponent } from './views/profile/add-members/add-members.component';
 import { ViewTitleComponent } from './views/capstone-title/view-title/view-title.component';
+import { EvaluateTitleComponent } from './views/capstone-title/evaluate-title/evaluate-title.component';
 
 const routes: Routes = [
   {
@@ -129,6 +130,11 @@ const routes: Routes = [
         path: 'view-title/:data/:index',
         title: 'View entry',
         component: ViewTitleComponent
+      },
+      {
+        path: 'evaluate-title/:id',
+        title: 'View entry',
+        component: EvaluateTitleComponent
       },
     ]
   },

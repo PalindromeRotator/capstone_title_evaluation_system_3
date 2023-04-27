@@ -17,6 +17,8 @@ exports.create = (req, res) => {
         title1_blob: req.body.title1_blob,
         title2_blob: req.body.title2_blob,
         title3_blob: req.body.title3_blob,
+        requests: req.body.requests,
+        coordinator_requests: req.body.coordinator_request
     };
 
     // Save Tutorial in the database
@@ -103,7 +105,7 @@ exports.findByUserId = (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving Tutorial with id=" + id
+                message: "Error retrieving Tutorial with id=" + user_id
             });
         });
 };

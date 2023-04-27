@@ -32,6 +32,11 @@ module.exports = (sequelize, Sequelize) => {
         },
         title3_blob: {
             type: Sequelize.BLOB
+        }, requests: {
+            type: Sequelize.STRING
+        },
+        coordinator_requests: {
+            type: Sequelize.STRING
         }
     });
 

@@ -1,9 +1,9 @@
+<label for="formGroupExampleInput" class="form-label">Handle Groups</label>
 <table class="table table-striped" *ngIf="user_type !== 'capstone_group'">
     <thead>
         <tr>
             <th scope="col">Group Name</th>
             <th scope="col">Section</th>
-            <th scope="col">Grade</th>
             <th scope="col"></th>
         </tr>
     </thead>
@@ -11,13 +11,36 @@
         <tr *ngFor="let groupArrayData of groupArray">
             <th scope="row">{{groupArrayData.group_name}}</th>
             <td>{{groupArrayData.section}}</td>
-            <td>{{groupArrayData.grades}}</td>
             <td>
                 <button class="btn btn-primary" (click)="viewEntry(groupArrayData)">View group</button>
             </td>
         </tr>
     </tbody>
 </table>
+
+<label for="formGroupExampleInput" class="form-label">All Groups</label>
+<table class="table table-striped" *ngIf="user_type !== 'capstone_group'">
+    <thead>
+        <tr>
+            <th scope="col">Group Name</th>
+            <th scope="col">Section</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let groupArrayData of allGroupArray">
+            <th scope="row">{{groupArrayData.group_name}}</th>
+            <td>{{groupArrayData.section}}</td>
+            <td>
+                <button class="btn btn-success" (click)="request(groupArrayData.id, groupArrayData.requests)"
+                    *ngIf="user_type === 'faculty'">Request</button>
+                &nbsp;
+                <button class="btn btn-primary" (click)="viewEntry(groupArrayData)">View group</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 
 <div *ngIf="user_type === 'capstone_group'">
     <div class="col">

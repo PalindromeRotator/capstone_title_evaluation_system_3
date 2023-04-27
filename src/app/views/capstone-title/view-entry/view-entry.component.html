@@ -15,13 +15,31 @@
     </div>
 </div>
 
-<!-- <div class="row">
+<div class="row">
     <div class="col">
         <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Faculties</label>
+            <br>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center"
+                    *ngFor="let data of facultyList">
+                    <p>{{data.name}}</p>
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-primary" (click)="assignAsPanel(data)">Assign as Panel</button>
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-primary" (click)="assignAsAdviser(data)">Assign as Adviser</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <br>
+            <br>
             <label for="formGroupExampleInput" class="form-label">Adviser and Panels</label>
             <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <p></p>
+                    <p>{{adviser.name}}</p>
                     <div class="row">
                         <div class="col">
                             <span class="badge bg-secondary rounded-pill">
@@ -58,8 +76,8 @@
             </ul>
         </div>
     </div>
-</div> -->
-<div class="row">
+</div>
+<!-- <div class="row">
     <div class="col">
         <div class="mb-3" style="padding: 5px; height: 250px; overflow-y: auto;">
             <label for="formGroupExampleInput" class="form-label">Comment</label>
@@ -113,8 +131,8 @@
                 </li>
             </ul>
         </div>
-    </div>
-    <!-- <div class="col" style="width:50%;">
+    </div> -->
+<!-- <div class="col" style="width:50%;">
         <div class="mb-3" style="padding: 5px; height: 250px; overflow-y: auto;">
             <label for="formGroupExampleInput" class="form-label">Grade</label>
             <hr>
@@ -165,6 +183,36 @@
             </ul>
         </div>
     </div> -->
+<!-- </div> -->
+<div class="mb-3" *ngIf="user_type === 'capstone_coordinator'">
+    <label for="formGroupExampleInput" class="form-label">Adviser request</label>
+    <hr>
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center"
+            *ngFor="let data of adviserRequests">
+            <div style="width: 20%;">
+                <p style="word-wrap: break-word;">
+                    <b>{{data.name}}</b>
+                </p>
+            </div>
+            <button class="btn btn-success" (click)="accept(data)">Accept</button>
+        </li>
+    </ul>
+</div>
+<div class="mb-3" *ngIf="user_type === 'faculty'">
+    <label for="formGroupExampleInput" class="form-label">Coordinator request</label>
+    <hr>
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center"
+            *ngFor="let data of coordinatorRequests">
+            <div style="width: 20%;">
+                <p style="word-wrap: break-word;">
+                    <b>{{data.name}}</b>
+                </p>
+            </div>
+            <button class="btn btn-success" (click)="acceptCoordinator(data)">Accept</button>
+        </li>
+    </ul>
 </div>
 <div class="col">
     <div class="mb-3">
@@ -175,9 +223,18 @@
                 No Titles Available
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center"
-                *ngFor="let data of titlesArray">
+                *ngFor="let data of titlesArray; let i=index">
                 {{data.title}}
                 <div class="row">
+                    <div class="col" *ngIf="i == 0">
+                        Total Grade: {{titlesScoreObject.title_1}}
+                    </div>
+                    <div class="col" *ngIf="i == 1">
+                        Total Grade: {{titlesScoreObject.title_2}}
+                    </div>
+                    <div class="col" *ngIf="i == 2">
+                        Total Grade: {{titlesScoreObject.title_3}}
+                    </div>
                     <div class="col">
                         <button class="btn btn-primary"> Download</button>
                     </div>
@@ -214,6 +271,7 @@
         </ul>
     </div>
 </div>
-<!-- <div class="mb-3">
-    <button class="btn btn-success"> Save Changes</button>
-</div> -->
+
+<div class="mb-3">
+    <button class="btn btn-success" (click)="goToEvaluate()"> Grade/Evaluarte titles</button>
+</div>

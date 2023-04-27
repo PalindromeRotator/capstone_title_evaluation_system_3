@@ -13,4 +13,6 @@ export class Titles {
     title1_blob?: Blob;
     title2_blob?: Blob;
     title3_blob?: Blob;
+    requests?: string;
+    coordinator_requests?: string;
 }
