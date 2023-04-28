@@ -9,6 +9,8 @@ import {
 } from '@angular/core';
 import { getStyle } from '@coreui/utils';
 import { ChartjsComponent } from '@coreui/angular-chartjs';
+import { TitlesService } from 'src/app/services/titles.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-widgets-dropdown',
@@ -17,10 +19,37 @@ import { ChartjsComponent } from '@coreui/angular-chartjs';
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
+  dashboardData = {
+    faculty: 0,
+    capstone_groups: 0,
+    capstone_coordinator: 0,
+    capstone_title: 0,
+  }
+  constructor(private titlesService: TitlesService, private usersService: UsersService, private changeDetectorRef: ChangeDetectorRef) { }
+  ngOnInit() {
+    this.usersService.getAll().subscribe(
+      response => {
+        for (let data of response) {
+          if (data.user_type === 'faculty') {
+            this.dashboardData.faculty += 1
+          }
+          if (data.user_type === 'capstone_group') {
+            this.dashboardData.capstone_groups += 1
+          }
+          if (data.user_type === 'capstone_coordinator') {
+            this.dashboardData.capstone_coordinator += 1
+          }
+        }
+      }
+    )
 
-  constructor(
-    private changeDetectorRef: ChangeDetectorRef
-  ) {}
+    this.titlesService.getAll().subscribe(
+      response => {
+        this.dashboardData.capstone_title = response.length
+      }
+    )
+
+  }
 
   data: any[] = [];
   options: any[] = [];
@@ -114,11 +143,6 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
       }
     }
   };
-
-  ngOnInit(): void {
-    this.setData();
-  }
-
   ngAfterContentInit(): void {
     this.changeDetectorRef.detectChanges();
 
@@ -175,8 +199,36 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
   template: '<c-chart type="line" [data]="data" [options]="options" width="300" #chart></c-chart>'
 })
 export class ChartSample implements AfterViewInit {
+  dashboardData = {
+    faculty: 0,
+    capstone_groups: 0,
+    capstone_coordinator: 0,
+    capstone_title: 0,
+  }
+  constructor(private titlesService: TitlesService, private usersService: UsersService) { }
+  ngOnInit() {
+    this.usersService.getAll().subscribe(
+      response => {
+        for (let data of response) {
+          if (data.user_type === 'faculty') {
+            this.dashboardData.faculty += 1
+          }
+          if (data.user_type === 'capstone_group') {
+            this.dashboardData.faculty += 1
+          }
+          if (data.user_type === 'capstone_coordinator') {
+            this.dashboardData.faculty += 1
+          }
+        }
+      }
+    )
 
-  constructor() {}
+    this.titlesService.getAll().subscribe(
+      response => {
+        this.dashboardData.capstone_title = response.length
+      }
+    )
+  }
 
   @ViewChild('chart') chartComponent!: ChartjsComponent;
 
