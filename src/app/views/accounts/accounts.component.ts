@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Users } from 'src/app/models/users';
+import { TitlesService } from 'src/app/services/titles.service';
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
 
@@ -9,28 +10,35 @@ import Swal from 'sweetalert2';
   styleUrls: ['./accounts.component.scss']
 })
 export class AccountsComponent {
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService, private titlesService: TitlesService) { }
   users: Array<Users> = []
   user_type = localStorage.getItem('user_type')
   public visible = false;
   sectionArray: Array<any> = []
   ngOnInit() {
-    if (localStorage.getItem('user_type') === 'capstone_coordinator') {
-      this.usersService.getAllFacultyGroup().subscribe(
-        response => {
-          console.log(response)
-          this.users = response
-        }
-      )
-    } else {
-      this.usersService.getAllFaculty().subscribe(
-        response => {
-          console.log(response)
-          this.users = response
-          this.sectionArray.push(this.getAllSection())
-        }
-      )
-    }
+    // if (localStorage.getItem('user_type') === 'capstone_coordinator') {
+    //   this.usersService.getAllFacultyGroup().subscribe(
+    //     response => {
+    //       console.log(response)
+    //       this.users = response
+    //     }
+    //   )
+    // } else {
+    //   this.usersService.getAllFaculty().subscribe(
+    //     response => {
+    //       console.log(response)
+    //       this.users = response
+    //       this.sectionArray.push(this.getAllSection())
+    //     }
+    //   )
+    // }
+    this.usersService.getAll().subscribe(
+      response => {
+        console.log(response)
+        this.users = response
+        this.sectionArray.push(this.getAllSection())
+      }
+    )
 
   }
 
@@ -51,8 +59,41 @@ export class AccountsComponent {
 
   acceptUser(id: any): void {
     this.usersService.update(id, { is_verified: true }).subscribe(response => {
-      window.location.reload()
+
     })
+
+    this.usersService.getById(id).subscribe(
+      response => {
+        console.log(response)
+
+
+        if (response.user_type === 'capstone_group') {
+          const titleData = {
+            group_name: response.name,
+            section: response.section,
+            user_id: response.id,
+          }
+          this.titlesService.create(titleData).subscribe(
+            response => {
+              Swal.fire({
+                icon: 'success',
+                text: 'Capstone group Accepted'
+              }).then(() => {
+                window.location.reload()
+              })
+            }
+          )
+        } else {
+          Swal.fire({
+            icon: 'success',
+            text: 'Faculty Accepted'
+          }).then(() => { window.location.reload() })
+        }
+
+      }
+    )
+
+
   }
   rejectUser(id: any): void {
 

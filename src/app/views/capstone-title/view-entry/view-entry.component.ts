@@ -72,27 +72,23 @@ export class ViewEntryComponent {
   // }
 
   onFileSelected(event: any, index: any): void {
-    // const selectedFile = <File>event.target.files[0];
-    // let blob = new Blob(event.target.files, { type: event.target.files[0].type });
-    // let url = window.URL.createObjectURL(blob);
-    // this.capsuleData.file = event.target.files[0].name
-    // this.capsuleData.blob_file = blob
-    console.log(event.target.files[0].type)
-    if (event.target.files[0].type === 'application/pdf') {
-      const fileReader = new FileReader();
-      fileReader.readAsArrayBuffer(event.target.files[0]);
+    // console.log(event.target.files[0].type)
+    // if (event.target.files[0].type === 'application/pdf') {
+    //   const fileReader = new FileReader();
+    //   fileReader.readAsArrayBuffer(event.target.files[0]);
 
-      fileReader.onload = () => {
-        const pdfBlob = new Blob([fileReader.result!], { type: 'application/pdf' });
-        console.log('PDF Blob:', pdfBlob);
-        // this.titlesArray[index] = { "id": index, "title": event.target.files[0].name, "blob_file": pdfBlob }
-        // this.capsuleData.file = event.target.files[0].name
-        // this.capsuleData.blob_file = pdfBlob
-        // console.log(pdfBlob)
-      };
-    } else {
-      console.log('Invalid file type. Only PDF files are allowed.');
-    }
+    //   fileReader.onload = () => {
+    //     const pdfBlob = new Blob([fileReader.result!], { type: 'application/pdf' });
+    //     console.log('PDF Blob:', pdfBlob);
+    //   };
+    // } else {
+    //   console.log('Invalid file type. Only PDF files are allowed.');
+    // }
+
+    // const inputElement = event.target as HTMLInputElement;
+    // if (inputElement.files && inputElement.files.length > 0) {
+    //   this.selectedFile = inputElement.files[0];
+    // }
   }
 
   goToEvaluate(): void {

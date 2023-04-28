@@ -24,15 +24,7 @@ module.exports = (sequelize, Sequelize) => {
         user_id: {
             type: Sequelize.NUMBER
         },
-        title1_blob: {
-            type: Sequelize.BLOB
-        },
-        title2_blob: {
-            type: Sequelize.BLOB
-        },
-        title3_blob: {
-            type: Sequelize.BLOB
-        }, requests: {
+        requests: {
             type: Sequelize.STRING
         },
         coordinator_requests: {

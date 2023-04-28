@@ -10,9 +10,6 @@ export class Titles {
     user_id?: number;
     createdAt?: string;
     updatedAt?: string;
-    title1_blob?: Blob;
-    title2_blob?: Blob;
-    title3_blob?: Blob;
     requests?: string;
     coordinator_requests?: string;
 }

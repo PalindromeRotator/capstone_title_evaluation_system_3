@@ -9,7 +9,8 @@
     <div class="col">
         <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">File</label>
-            <input type="file" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+            <input type="file" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder"
+                (change)="onFileSelected($event)">
         </div>
     </div>
 </div>

@@ -42,10 +42,10 @@ export class ViewTitleComponent {
         if (this.index == 0) {
           this.file1 = pdfBlob
         } else if (this.index == 1) {
-          this.file1 = pdfBlob
+          this.file2 = pdfBlob
         }
         else if (this.index == 2) {
-          this.file1 = pdfBlob
+          this.file3 = pdfBlob
         }
       };
     } else {
@@ -56,6 +56,7 @@ export class ViewTitleComponent {
     }
   }
   saveChanges(): void {
+    console.log(this.file2)
     this.titleArray[this.index] = {
       title: this.titleData.title
     }

@@ -4,6 +4,24 @@ import { TitlesService } from 'src/app/services/titles.service';
 import { Router } from '@angular/router';
 import { PanelsInterface, TitlesInterface } from './view-entry/titles';
 import Swal from 'sweetalert2';
+import { saveAs } from 'file-saver';
+
+//firebase modules
+import { initializeApp } from "firebase/app";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCZpFe6t1G2p6TB_YmaJy4sy8Blly--Oqc",
+  authDomain: "ctes-3.firebaseapp.com",
+  projectId: "ctes-3",
+  storageBucket: "ctes-3.appspot.com",
+  messagingSenderId: "793210221947",
+  appId: "1:793210221947:web:99e513ff10bf76b8d7f9de",
+  measurementId: "G-D5LC4DH2EF"
+};
+const app = initializeApp(firebaseConfig);
+const storage = getStorage(app)
+
 @Component({
   selector: 'app-capstone-title',
   templateUrl: './capstone-title.component.html',
@@ -26,7 +44,7 @@ export class CapstoneTitleComponent {
     "createdAt": "",
     "updatedAt": "",
     "user_id": 0,
-    "coordinator_requests": ""
+    "coordinator_requests": "",
   };
   titlesArray: Array<TitlesInterface> = []
   panelsArray: Array<PanelsInterface> = []
@@ -87,29 +105,8 @@ export class CapstoneTitleComponent {
     this.router.navigate(['/view-title', JSON.stringify(this.titleObject), index])
   }
 
-  downloadFile(i: number): void {
-    if (i == 0) {
-      const url = URL.createObjectURL(new Blob([this.titleObject.title1_blob!]));
-      const link = document.createElement('a');
-      link.download = `title1.pdf`;
-      link.href = url;
-      link.click();
-    } else if (i == 1) {
-      const url = URL.createObjectURL(new Blob([this.titleObject.title2_blob!]));
-      const link = document.createElement('a');
-      link.download = `title2.pdf`;
-      link.href = url;
-      link.click();
-    }
-    else if (i == 2) {
-      const url = URL.createObjectURL(new Blob([this.titleObject.title3_blob!]));
-      const link = document.createElement('a');
-      // link.download = `title3.pdf`;
-      link.href = url;
-      link.click();
-    } else {
-
-    }
+  downloadFile(data: any): void {
+    saveAs(data.file)
   }
 
   // downloadFile(): void {

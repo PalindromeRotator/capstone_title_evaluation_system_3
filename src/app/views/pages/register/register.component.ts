@@ -40,12 +40,12 @@ export class RegisterComponent {
           },
           error => {
             console.log(error)
-            // if (error.status == 404)
-            //   Swal.fire({
-            //     icon: 'error',
-            //     title: 'Oops...',
-            //     text: 'Username or Password is Incorrect.'
-            //   })
+            if (error.status == 404)
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Username or Password is Incorrect.'
+              })
           });
     }
     else {

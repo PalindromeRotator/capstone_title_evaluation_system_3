@@ -14,9 +14,6 @@ exports.create = (req, res) => {
         grades: req.body.grades,
         comment: req.body.comment,
         user_id: req.body.user_id,
-        title1_blob: req.body.title1_blob,
-        title2_blob: req.body.title2_blob,
-        title3_blob: req.body.title3_blob,
         requests: req.body.requests,
         coordinator_requests: req.body.coordinator_request
     };
