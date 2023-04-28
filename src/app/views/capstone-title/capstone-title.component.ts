@@ -66,23 +66,38 @@ export class CapstoneTitleComponent {
       )
     }
 
+    if (localStorage.getItem('user_type') === 'admin') {
 
-    this.titlesService.getAll().subscribe(
-      response => {
-        var tempGroup: Titles[] = []
-        var tempGroup2: Titles[] = []
-        response.forEach(function (data) {
-          JSON.parse(data.panels!).forEach(function (panelData: any) {
-            if (panelData.uid === parseInt(localStorage.getItem('uid')!)) {
-              tempGroup.push(data)
-            }
-          })
+      this.titlesService.getAll().subscribe(
+        response => {
+          console.log(response)
+          // this.groupArray = tempGroup
+          this.allGroupArray = response
+        }
+      )
+    }
 
-        })
-        this.groupArray = tempGroup
-        this.allGroupArray = response
-      }
-    )
+    if (localStorage.getItem('user_type') === 'faculty') {
+
+      this.titlesService.getAll().subscribe(
+        response => {
+          console.log(response)
+          // this.groupArray = tempGroup
+          this.allGroupArray = response
+        }
+      )
+    }
+
+    if (localStorage.getItem('user_type') === 'capstone_coordinator') {
+
+      this.titlesService.getAll().subscribe(
+        response => {
+          console.log(response)
+          // this.groupArray = tempGroup
+          this.allGroupArray = response
+        }
+      )
+    }
   }
   viewEntry(data: any): void {
     const stringifyVar = JSON.stringify(data)

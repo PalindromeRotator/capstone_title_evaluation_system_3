@@ -26,11 +26,6 @@ export const navItemsAdmin: INavData[] = [
     iconComponent: { name: 'cil-align-left' }
   },
   {
-    name: 'Panels and Adviser',
-    url: '/panel-adviser',
-    iconComponent: { name: 'cil-grain' }
-  },
-  {
     name: 'Reports',
     url: '/report',
     iconComponent: { name: 'cil-chart' }
@@ -72,14 +67,14 @@ export const navItemsCoordinator: INavData[] = [
     iconComponent: { name: 'cil-user' }
   },
   {
-    name: 'Accounts',
-    url: '/accounts',
-    iconComponent: { name: 'cil-user-follow' }
-  },
-  {
     name: 'Capstone Titles',
     url: '/capstone-titles',
     iconComponent: { name: 'cil-align-left' },
+  },
+  {
+    name: 'Reports',
+    url: '/report',
+    iconComponent: { name: 'cil-chart' }
   },
   {
     name: 'Content management',
