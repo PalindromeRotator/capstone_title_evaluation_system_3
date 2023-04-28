@@ -16,7 +16,8 @@
     routerLink="./"
   >
   </c-sidebar-brand> -->
-  <h1>Bulsu System</h1>
+  <img src="{{logo}}" class="rounded float-start" alt="...">
+  <h3>BulSU System</h3>
   <perfect-scrollbar [config]="perfectScrollbarConfig">
     <!--  [perfectScrollbar]="perfectScrollbarConfig"-->
     <c-sidebar-nav [navItems]="navItemsAdmin" dropdownMode="close" *ngIf="user_type === 'admin'">

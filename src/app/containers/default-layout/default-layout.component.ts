@@ -11,7 +11,7 @@ export class DefaultLayoutComponent {
   public navItems = navItems;
   public navItemsAdmin = navItemsAdmin;
   public navItemsCoordinator = navItemsCoordinator;
-
+  public logo = localStorage.getItem('content-image') ?? "../../../assets/img/brand/favicon0.png"
   public user_type = localStorage.getItem('user_type');
   public perfectScrollbarConfig = {
     suppressScrollX: true,

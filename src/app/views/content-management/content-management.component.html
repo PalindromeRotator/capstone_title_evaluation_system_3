@@ -1,1 +1,46 @@
-<p>content-management works!</p>
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col-xl order-xl-1">
+            <div class="card bg-secondary shadow">
+                <div class="card-header bg-white border-0">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h3 class="mb-0">Content</h3>
+                        </div>
+                        <!-- <div class="col-4 text-right">
+                    <a href="#!" class="btn btn-sm btn-primary">Settings</a>
+                  </div> -->
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="col order-xl-2 mb-5 mb-xl-0">
+                        <div class="card card-profile shadow">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-3 order-lg-2">
+                                    <div class="card-profile-image">
+                                        <a href="javascript:void(0)">
+                                            <img [src]="contentData.file" class="rounded-circle">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+                            </div>
+                            <div class="card-body pt-0 pt-md-4">
+                                <br><br>
+                                <hr class="my-4" />
+                                <div class="text-center">
+                                    <input type="file" id="input-email" (change)="onFileSelected($event)"
+                                        class="form-control form-control-alternative" accept="application/pdf">
+                                    <br>
+                                    <button class="btn btn-primary" (click)="saveChanges()"> Save Changes</button>
+                                </div>
+                                <hr class="my-4" />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
