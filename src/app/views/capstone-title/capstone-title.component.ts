@@ -48,7 +48,11 @@ export class CapstoneTitleComponent {
   };
   titlesArray: Array<TitlesInterface> = []
   panelsArray: Array<PanelsInterface> = []
-
+  titlesScoreObject = {
+    title_1: 0,
+    title_2: 0,
+    title_3: 0
+  }
   groupArray: Array<Titles> = []
   allGroupArray: Array<Titles> = []
   constructor(private titlesService: TitlesService, private router: Router) { }
@@ -58,7 +62,8 @@ export class CapstoneTitleComponent {
         response => {
           this.titleObject = response
           this.titlesArray = JSON.parse(response.titles!);
-          console.log(JSON.parse(response.titles!))
+          this.titlesScoreObject = JSON.parse(response.grades!)
+          console.log(response)
         },
         error => {
           console.log(error)
@@ -101,6 +106,7 @@ export class CapstoneTitleComponent {
   }
   viewEntry(data: any): void {
     const stringifyVar = JSON.stringify(data)
+    console.log(data)
     this.router.navigate(['/view-entry', stringifyVar])
   }
 
@@ -121,7 +127,7 @@ export class CapstoneTitleComponent {
   }
 
   downloadFile(data: any): void {
-    saveAs(data.file)
+    saveAs(data.file, 'download.pdf')
   }
 
   // downloadFile(): void {

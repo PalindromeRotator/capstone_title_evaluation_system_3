@@ -5,6 +5,8 @@ import { TitlesInterface, PanelsInterface } from './titles'
 import { TitlesService } from 'src/app/services/titles.service';
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
+import { saveAs } from 'file-saver';
+import { Users } from 'src/app/models/users';
 
 @Component({
   selector: 'app-view-entry',
@@ -41,6 +43,7 @@ export class ViewEntryComponent {
     uid: 0,
     name: ''
   }
+  file: Blob = new Blob
   // adviserObject = JSON.parse(this.titleObject.adviser)
   constructor(private route: ActivatedRoute, private users: UsersService, private titles: TitlesService, private router: Router, private http: HttpClient) { }
   ngOnInit() {
@@ -51,44 +54,43 @@ export class ViewEntryComponent {
     )
     this.titleString = this.route.snapshot.paramMap.get('titleData')!
     this.titleObject = JSON.parse(this.titleString);
+    console.log(this.titleObject.grades)
+
     this.titlesArray = JSON.parse(this.titleObject.titles)
     this.panelsArray = JSON.parse(this.titleObject.panels)
     this.titlesScoreObject = JSON.parse(this.titleObject.grades)
     this.adviserRequests = JSON.parse(this.titleObject.requests);
     this.coordinatorRequests = JSON.parse(this.titleObject.coordinator_requests);
     this.adviser = JSON.parse(this.titleObject.adviser)
-    console.log(JSON.parse(this.titleObject.requests));
   }
 
-  // downloadFile(): void {
-  //   const url = URL.createObjectURL(new Blob([this.capsuleData.blob_file]));
-  //   const link = document.createElement('a');
-  //   link.download = `${this.capsuleData.title}.pdf`;
-  //   link.href = url;
-  //   link.click();
-
-  //   console.log(this.capsuleData.blob_file)
-  //   console.log(url)
-  // }
+  downloadFile(url: string): void {
+    saveAs(url, 'download.pdf')
+    console.log(url)
+  }
 
   onFileSelected(event: any, index: any): void {
-    // console.log(event.target.files[0].type)
-    // if (event.target.files[0].type === 'application/pdf') {
-    //   const fileReader = new FileReader();
-    //   fileReader.readAsArrayBuffer(event.target.files[0]);
+    console.log(event.target.files[0].type)
+    if (event.target.files[0].type === 'application/pdf') {
+      const inputElement = event.target as HTMLInputElement;
+      if (inputElement.files && inputElement.files.length > 0) {
+        if (!inputElement.files[0]) {
+          return;
+        }
 
-    //   fileReader.onload = () => {
-    //     const pdfBlob = new Blob([fileReader.result!], { type: 'application/pdf' });
-    //     console.log('PDF Blob:', pdfBlob);
-    //   };
-    // } else {
-    //   console.log('Invalid file type. Only PDF files are allowed.');
-    // }
-
-    // const inputElement = event.target as HTMLInputElement;
-    // if (inputElement.files && inputElement.files.length > 0) {
-    //   this.selectedFile = inputElement.files[0];
-    // }
+        const fileReader = new FileReader();
+        fileReader.onload = () => {
+          const blob = new Blob([fileReader.result as ArrayBuffer], { type: event.target.files[0].type });
+          this.file = blob
+        };
+        fileReader.readAsArrayBuffer(event.target.files[0]);
+      }
+    } else {
+      Swal.fire({
+        icon: 'error',
+        text: 'Invalid file format'
+      })
+    }
   }
 
   goToEvaluate(): void {
@@ -151,5 +153,68 @@ export class ViewEntryComponent {
         })
     }
 
+  }
+
+  addPanelAdviser(datas: Users): void {
+    Swal.fire({
+      title: 'Add as?',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Panel',
+      denyButtonText: `Adviser`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        var arr = this.panelsArray
+        var flag = false
+        if (arr.length === 3 && (this.adviser.uid !== 0 || this.adviser)) {
+          Swal.fire({
+            icon: 'error',
+            text: 'Panel is full.'
+          })
+        }
+        else {
+          for (let data of arr) {
+            if (data.uid === datas.id) {
+              flag = true
+            }
+          }
+          if (flag) {
+            Swal.fire({
+              icon: 'error',
+              text: 'Panel already in the list'
+            })
+          } else {
+            this.panelsArray.push({ uid: datas.id, name: datas.name! })
+            this.titles.update(this.titleObject.id, { panels: JSON.stringify(this.panelsArray) }).subscribe(response => { })
+          }
+          console.log(datas)
+        }
+
+      } else if (result.isDenied) {
+        var obj = this.adviser
+        var flag = false
+        if (this.adviser.uid) {
+          Swal.fire({
+            icon: 'error',
+            text: 'Adviser is full.'
+          })
+        }
+        else {
+          this.adviser = { uid: datas.id, name: datas.name! }
+          this.titles.update(this.titleObject.id, { adviser: JSON.stringify(this.adviser) }).subscribe(response => { })
+
+        }
+      }
+    })
+  }
+
+  chooseTitle(data: any, index: any): void {
+    Swal.fire({
+      icon: 'success',
+      text: `Title ${data.title} is chosen`
+    })
+    this.titlesArray[index] = { title: data.title, file: data.file, is_chosen: true }
+    this.titles.update(this.titleObject.id, { titles: JSON.stringify(this.titlesArray) }).subscribe(response => { })
   }
 }

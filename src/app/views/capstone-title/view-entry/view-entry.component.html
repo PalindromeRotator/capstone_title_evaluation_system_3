@@ -72,7 +72,7 @@
                         Total Grade: {{titlesScoreObject.title_3}}
                     </div>
                     <div class="col">
-                        <button class="btn btn-primary"> Download</button>
+                        <button class="btn btn-primary" (click)="downloadFile(data.file)"> Download</button>
                     </div>
                 </div>
             </li>
@@ -154,7 +154,7 @@
                         Total Grade: {{titlesScoreObject.title_3}}
                     </div>
                     <div class="col">
-                        <button class="btn btn-primary"> Download</button>
+                        <button class="btn btn-primary" (click)="downloadFile(data.file)"> Download</button>
                     </div>
                 </div>
             </li>
@@ -184,7 +184,13 @@
     </div>
     <label for="formGroupExampleInput" class="form-label">Adviser and Panels</label>
     <br>
-    <button class="btn btn-primary"> Add</button>
+    <div class="dropdown">
+        <div class="chip-container">
+            <div class="chip" *ngFor="let data of facultyList">
+                <div (click)="addPanelAdviser(data)">{{data.name}}</div>
+            </div>
+        </div>
+    </div>
     <br>
     <br>
     <ul class="list-group">
@@ -223,14 +229,20 @@
                 *ngFor="let data of titlesArray; let i=index">
                 {{data.title}}
                 <div class="row">
-                    <div class="col">
-                        Total Grade:
+                    <div class="col" *ngIf="i == 0">
+                        Total Grade: {{titlesScoreObject.title_1}}
+                    </div>
+                    <div class="col" *ngIf="i == 1">
+                        Total Grade: {{titlesScoreObject.title_2}}
+                    </div>
+                    <div class="col" *ngIf="i == 2">
+                        Total Grade: {{titlesScoreObject.title_3}}
                     </div>
                     <div class="col">
-                        <button class="btn btn-primary"> Download</button>
+                        <button class="btn btn-primary" (click)="downloadFile(data.file)"> Download</button>
                     </div>
                     <div class="col">
-                        <button class="btn btn-success"> Chose </button>
+                        <button class="btn btn-success" (click)="chooseTitle(data, i)"> Chose </button>
                     </div>
                 </div>
             </li>

@@ -1,0 +1,24 @@
+/* Style the chip container */
+.chip-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Style the individual chips */
+.chip {
+    background-color: #f1f1f1;
+    color: #333;
+    border-radius: 16px;
+    padding: 8px 16px;
+    font-size: 14px;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Change the background color and text color on hover */
+.chip:hover {
+    background-color: #333;
+    color: #f1f1f1;
+}

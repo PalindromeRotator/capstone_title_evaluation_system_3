@@ -35,6 +35,7 @@ export class AddEntryComponent {
   titleData: Entry = {
     title: '',
     file: '',
+    is_chosen: false,
   }
   file: Blob = new Blob
   titleObject: Titles = {};

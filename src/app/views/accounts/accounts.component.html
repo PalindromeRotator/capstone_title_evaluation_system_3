@@ -18,12 +18,15 @@
             <td>
                 <button class="btn btn-primary" style="margin-right: 5px;" *ngIf="!userData.is_verified"
                     (click)=" acceptUser(userData.id)">Accept</button>
-                <select aria-label="Default select example" cSelect (change)="assignAsCoordinator(userData.id,$event)"
-                    *ngIf="userData.is_verified && user_type ==='admin' && userData.user_type ==='capstone_coordinator'">
+                <button class="btn btn-primary" style="margin-right: 5px;"
+                    *ngIf="userData.is_verified && userData.user_type === 'faculty'"
+                    (click)="assignAsCoordinator(userData.id, $event)">Assign as Coordinator</button>
+                <!-- <select aria-label="Default select example" cSelect (change)="assignAsCoordinator(userData.id,$event)"
+                    *ngIf="userData.is_verified && user_type ==='admin' && userData.user_type ==='capstone_coordinator' || userData.user_type ==='faculty'">
                     <option default *ngIf="!userData.section || userData.section === ''">Select section</option>
                     <option value="1" *ngFor="let sectionArrayData of sectionArray">{{sectionArrayData}}</option>
-                </select>
-                <p *ngIf="userData.is_verified">{{userData.section}}</p>
+                </select> -->
+                <!-- <p *ngIf="userData.is_verified">{{userData.section}}</p> -->
                 <!-- <button class="btn btn-danger" (click)="rejectUser(userData.id)">Deny</button> -->
             </td>
         </tr>

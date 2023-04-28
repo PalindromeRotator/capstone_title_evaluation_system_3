@@ -19,6 +19,7 @@ export class EvaluateTitleComponent {
     this.titleService.getById(parseInt(this.route.snapshot.paramMap.get('id')!)).subscribe(
       response => {
         this.grade = JSON.parse(response.grades!);
+
       }
     )
   }
@@ -38,7 +39,10 @@ export class EvaluateTitleComponent {
   submit(): void {
     this.titleService.update(parseInt(this.route.snapshot.paramMap.get('id')!), { grades: JSON.stringify(this.grade) }).subscribe(
       response => {
-        // this.routes.navigate(['/capstone-titles'])
+        this.routes.navigate(['/capstone-titles'])
+      },
+      error => {
+
       }
     )
   }

@@ -100,12 +100,21 @@ export class AccountsComponent {
   }
 
   assignAsCoordinator(id: any, event: any): void {
-    this.usersService.update(id, { section: event.target.value }).subscribe(
+    this.usersService.update(id, { user_type: 'capstone_coordinator' }).subscribe(
       response => {
         Swal.fire({
           icon: 'info',
           text: 'Successfully Assigned.'
         })
+          .then(() => {
+            this.usersService.getAll().subscribe(
+              response => {
+                console.log(response)
+                this.users = response
+                this.sectionArray.push(this.getAllSection())
+              }
+            )
+          })
       }
     )
   }

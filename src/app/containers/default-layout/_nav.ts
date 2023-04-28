@@ -33,30 +33,7 @@ export const navItemsAdmin: INavData[] = [
   {
     name: 'Content management',
     url: '/content-management',
-    iconComponent: { name: 'cil-cog' }
-  },
-  {
-    name: 'Icons',
-    iconComponent: { name: 'cil-star' },
-    url: '/icons',
-    children: [
-      {
-        name: 'CoreUI Free',
-        url: '/icons/coreui-icons',
-        badge: {
-          color: 'success',
-          text: 'FREE'
-        }
-      },
-      {
-        name: 'CoreUI Flags',
-        url: '/icons/flags'
-      },
-      {
-        name: 'CoreUI Brands',
-        url: '/icons/brands'
-      }
-    ]
+    iconComponent: { name: 'cil-star' }
   },
 ];
 
@@ -79,30 +56,7 @@ export const navItemsCoordinator: INavData[] = [
   {
     name: 'Content management',
     url: '/content-management',
-    iconComponent: { name: 'cil-cog' }
-  },
-  {
-    name: 'Icons',
-    iconComponent: { name: 'cil-star' },
-    url: '/icons',
-    children: [
-      {
-        name: 'CoreUI Free',
-        url: '/icons/coreui-icons',
-        badge: {
-          color: 'success',
-          text: 'FREE'
-        }
-      },
-      {
-        name: 'CoreUI Flags',
-        url: '/icons/flags'
-      },
-      {
-        name: 'CoreUI Brands',
-        url: '/icons/brands'
-      }
-    ]
+    iconComponent: { name: 'cil-star' }
   },
 ];
 
@@ -120,29 +74,6 @@ export const navItems: INavData[] = [
   {
     name: 'Content management',
     url: '/content-management',
-    iconComponent: { name: 'cil-cog' }
-  },
-  {
-    name: 'Icons',
-    iconComponent: { name: 'cil-star' },
-    url: '/icons',
-    children: [
-      {
-        name: 'CoreUI Free',
-        url: '/icons/coreui-icons',
-        badge: {
-          color: 'success',
-          text: 'FREE'
-        }
-      },
-      {
-        name: 'CoreUI Flags',
-        url: '/icons/flags'
-      },
-      {
-        name: 'CoreUI Brands',
-        url: '/icons/brands'
-      }
-    ]
+    iconComponent: { name: 'cil-star' }
   },
 ];
