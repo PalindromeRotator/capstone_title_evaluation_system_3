@@ -25,9 +25,9 @@
     </div>
 
 </div>
-<div>
-
+<div *ngIf="filter.selectedFilter === '1'">
     <button class="btn btn-success" (click)="exportexcel('justification-form','justification-form')">Export</button>
+    <br>
     <table class="table table-striped" id="justification-form">
         <thead>
             <tr>
@@ -43,6 +43,74 @@
                 <td>{{data.section}}</td>
                 <td>{{data.adviser}}</td>
                 <td>{{data.createdAt}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div *ngIf="filter.selectedFilter === '2'">
+    <button class="btn btn-success" (click)="exportexcel('titles','titles')">Export</button>
+    <br>
+    <table class="table table-striped" id="titles">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">File</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of titleChosen">
+                <th scope="row">{{data.title}}</th>
+                <td>
+                    <button class="btn btn-danger" (click)="downloadfile(data.file)">Download File</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div *ngIf="filter.selectedFilter === '3'">
+    <button class="btn btn-success" (click)="exportexcel('panels','panels')">Export</button>
+    <br>
+    <table class="table table-striped" id="panels">
+        <thead>
+            <tr>
+                <th scope="col">Full Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">User Type</th>
+                <th scope="col">Section</th>
+                <th scope="col">Expertise</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of usersData">
+                <th scope="row">{{data.name}}</th>
+                <td>{{data.section}}</td>
+                <td>{{data.user_type}}</td>
+                <td>{{data.section}}</td>
+                <td>{{data.expertise}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div *ngIf="filter.selectedFilter === '4'">
+    <button class="btn btn-success" (click)="exportexcel('advisers','advisers')">Export</button>
+    <br>
+    <table class="table table-striped" id="advisers">
+        <thead>
+            <tr>
+                <th scope="col">Full Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">User Type</th>
+                <th scope="col">Section</th>
+                <th scope="col">Expertise</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of usersData">
+                <th scope="row">{{data.name}}</th>
+                <td>{{data.section}}</td>
+                <td>{{data.user_type}}</td>
+                <td>{{data.section}}</td>
+                <td>{{data.expertise}}</td>
             </tr>
         </tbody>
     </table>

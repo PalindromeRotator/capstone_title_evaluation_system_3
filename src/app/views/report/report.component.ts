@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { saveAs } from 'file-saver';
 import { Titles } from 'src/app/models/titles';
+import { Users } from 'src/app/models/users';
 import { TitlesService } from 'src/app/services/titles.service';
+import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
 import * as XLSX from 'xlsx';
 
@@ -19,7 +22,9 @@ export class ReportComponent {
     selectedFilter: 'none',
   }
   titlesData!: Array<Titles>
-  constructor(private titlesService: TitlesService) {
+  usersData!: Array<Users>
+  titleChosen!: Array<any>
+  constructor(private titlesService: TitlesService, private usersService: UsersService) {
 
   }
   ngOnInit() {
@@ -59,6 +64,85 @@ export class ReportComponent {
         )
         break;
       }
+      case "2": {
+        this.titlesService.getAll().subscribe(
+          response => {
+            var result: Array<Object> = [
+            ]
+            for (let data of response) {
+              for (let titleData of JSON.parse(data.titles!)) {
+                if (titleData.is_chosen) {
+                  result.push(titleData)
+                }
+
+              }
+
+            }
+            this.titleChosen = []
+            console.log(result)
+            this.titleChosen = result
+          }
+        )
+        break;
+      }
+      case "3": {
+        this.titlesService.getAll().subscribe(
+          response => {
+            var result: Array<Object> = [
+            ]
+            for (let data of response) {
+              var dataCreatedDate = new Date(data.createdAt!);
+              if (dataCreatedDate.getTime() >= epochTimeFrom && dataCreatedDate.getTime() <= epochTimeInto) {
+
+                for (let panelData of JSON.parse(data.panels!)) {
+
+                  if (panelData.uid) {
+                    this.usersService.getById(JSON.parse(panelData.uid)).subscribe(
+                      response => {
+                        result.push(response)
+                      }
+                    )
+
+                  }
+                }
+
+
+              }
+            }
+            this.usersData = []
+            console.log(result)
+            this.usersData = result
+          }
+        )
+        break;
+      }
+      case "4": {
+        this.titlesService.getAll().subscribe(
+          response => {
+            var result: Array<Object> = [
+            ]
+            for (let data of response) {
+              console.log(data)
+              var dataCreatedDate = new Date(data.createdAt!);
+              if (dataCreatedDate.getTime() >= epochTimeFrom && dataCreatedDate.getTime() <= epochTimeInto) {
+                if (JSON.parse(data.adviser!).uid) {
+                  this.usersService.getById(JSON.parse(data.adviser!).uid).subscribe(
+                    response => {
+                      result.push(response)
+                    }
+                  )
+
+                }
+
+              }
+            }
+            this.usersData = []
+            console.log(result)
+            this.usersData = result
+          }
+        )
+        break;
+      }
       default:
         Swal.fire({
           icon: 'error',
@@ -68,7 +152,15 @@ export class ReportComponent {
     }
 
   }
-
+  getCurrentUser(uid: number): Object {
+    var object = {};
+    this.usersService.getById(uid).subscribe(
+      response => {
+        object = response
+      }
+    )
+    return object;
+  }
   getSelectedDate(from: string): Date {
     return new Date(from);
   }
@@ -92,5 +184,9 @@ export class ReportComponent {
     /* pass here the table id */
 
 
+  }
+
+  downloadfile(url: string) {
+    saveAs(url)
   }
 }
