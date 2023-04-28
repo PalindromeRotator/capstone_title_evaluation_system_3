@@ -29,7 +29,7 @@ module.exports = (sequelize, Sequelize) => {
         },
         coordinator_requests: {
             type: Sequelize.STRING
-        }
+        },
     });
 
     return Title;

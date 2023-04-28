@@ -15,7 +15,8 @@ exports.create = (req, res) => {
         comment: req.body.comment,
         user_id: req.body.user_id,
         requests: req.body.requests,
-        coordinator_requests: req.body.coordinator_request
+        coordinator_requests: req.body.coordinator_request,
+        createdAt: req.body.createdAt
     };
 
     // Save Tutorial in the database

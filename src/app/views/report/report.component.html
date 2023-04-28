@@ -1,49 +1,49 @@
-<div class="flex">
+<div class="row">
     <div class="col">
-        From
-        <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
-            <input class="form-control" type="text" readonly />
-            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-        </div>
-    </div>
-    <div class="col">
-        Into
-        <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
-            <input class="form-control" type="text" readonly />
-            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-        </div>
-    </div>
-    <div class="col">
-        <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
-            <button class="btn btn-primary">Find</button>
-        </div>
-    </div>
-</div>
+        <label for="date">From: </label>
+        <input class="datepicker" type="date" id="date" name="date" [(ngModel)]="filter.from" />
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">Group Name</th>
-            <th scope="col">Section</th>
-            <th scope="col">Adviser</th>
-            <th scope="col">Grade</th>
-            <th scope="col">Date Created</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-        </tr>
-    </tbody>
-</table>
+    </div>
+    <div class="col">
+        <label for="date">Into: </label>
+        <input class="datepicker" type="date" id="date" name="date" [(ngModel)]="filter.into" />
+    </div>
+    <div class="col">
+        <label for="my-select">Select an option:</label>
+        <select id="my-select" name="my-select" [(ngModel)]="filter.selectedFilter">
+            <option value="none">Select filter</option>
+            <option value="1">Capstone title justification form</option>
+            <option value="2">Selected title</option>
+            <option value="3">Panels</option>
+            <option value="4">Advisers </option>
+        </select>
+        &nbsp;
+        <button class="btn btn-primary" (click)="findFilter()">Find</button>
+    </div>
+    <div class="col">
+
+    </div>
+
+</div>
+<div>
+
+    <button class="btn btn-success" (click)="exportexcel('justification-form','justification-form')">Export</button>
+    <table class="table table-striped" id="justification-form">
+        <thead>
+            <tr>
+                <th scope="col">Group Name</th>
+                <th scope="col">Section</th>
+                <th scope="col">Adviser</th>
+                <th scope="col">Date Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of titlesData">
+                <th scope="row">{{data.group_name}}</th>
+                <td>{{data.section}}</td>
+                <td>{{data.adviser}}</td>
+                <td>{{data.createdAt}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

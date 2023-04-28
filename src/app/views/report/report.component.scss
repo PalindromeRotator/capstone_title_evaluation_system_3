@@ -10,3 +10,28 @@ label {
 #datepicker>span:hover {
     cursor: pointer;
 }
+
+label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+    display: block;
+}
+
+input[type="date"] {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #555;
+    padding: 10px;
+    width: 200px;
+}
+
+input[type="date"]:focus {
+    outline: none;
+    border-color: #66afe9;
+    box-shadow: 0 0 5px #66afe9;
+}
