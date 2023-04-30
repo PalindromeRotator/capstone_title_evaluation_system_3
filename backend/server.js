@@ -1,9 +1,9 @@
 const express = require("express");
 const cors = require("cors");
-
+require('dotenv').config();
 const app = express();
 var corsOptions = {
-    origin: process.env.ORIGIN || "http://localhost:8081"
+    origin: process.env.ORIGIN
 };
 
 app.use(cors(corsOptions));
@@ -36,8 +36,8 @@ require("./app/routes/titles.routes")(app);
 
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
-const PORT_TITLES = process.env.PORT || 8082;
+const PORT = process.env.PORT;
+const PORT_TITLES = process.env.PORT_TITLES;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
