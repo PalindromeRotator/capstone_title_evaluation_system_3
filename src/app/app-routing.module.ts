@@ -17,6 +17,7 @@ import { ViewEntryComponent } from './views/capstone-title/view-entry/view-entry
 import { AddMembersComponent } from './views/profile/add-members/add-members.component';
 import { ViewTitleComponent } from './views/capstone-title/view-title/view-title.component';
 import { EvaluateTitleComponent } from './views/capstone-title/evaluate-title/evaluate-title.component';
+import { ForgotPasswordComponent } from './views/pages/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {
@@ -164,6 +165,13 @@ const routes: Routes = [
     component: RegisterComponent,
     data: {
       title: 'Register Page'
+    }
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
+    data: {
+      title: 'Forgot password page'
     }
   },
   { path: '**', redirectTo: 'dashboard' }

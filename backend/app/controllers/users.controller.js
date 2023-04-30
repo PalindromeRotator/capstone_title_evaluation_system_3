@@ -149,7 +149,7 @@ exports.findAllGroup = (req, res) => {
 exports.findOne = (req, res) => {
     const email = req.params.email;
     const password = req.params.password;
-    Users.findOne({ where: { email: email, password: password } })
+    Users.findOne({ where: { email: email } })
         .then(data => {
             if (data) {
                 res.send(data);
