@@ -86,9 +86,24 @@ export class CapstoneTitleComponent {
 
       this.titlesService.getAll().subscribe(
         response => {
-          console.log(response)
           // this.groupArray = tempGroup
-          this.allGroupArray = response
+          for (let data of response) {
+            var panels = JSON.parse(data.panels!)
+            console.log(panels)
+            if (JSON.parse(data.adviser!).uid === parseInt(localStorage.getItem('uid')!)) {
+              this.allGroupArray.push(data)
+            } else {
+              for (let panelData of panels) {
+                console.log(panelData.uid, parseInt(localStorage.getItem('uid')!), panelData.uid === parseInt(localStorage.getItem('uid')!) || JSON.parse(data.adviser!).uid === parseInt(localStorage.getItem('uid')!))
+                // console.log(panelData.uid === parseInt(localStorage.getItem('uid')!) || JSON.parse(data.adviser!).uid === parseInt(localStorage.getItem('uid')!))
+                if (panelData.uid === parseInt(localStorage.getItem('uid')!)) {
+                  this.allGroupArray.push(data)
+                }
+              }
+            }
+
+          }
+          // this.allGroupArray = response
         }
       )
     }
@@ -127,7 +142,7 @@ export class CapstoneTitleComponent {
   }
 
   downloadFile(data: any): void {
-    saveAs(data.file, 'download.pdf')
+    saveAs(data.file)
   }
 
   // downloadFile(): void {
@@ -154,5 +169,34 @@ export class CapstoneTitleComponent {
         })
       }
     )
+  }
+  removeTitle(id: any, index: any): void {
+    Swal.fire({
+      title: 'Are you sure you want to delete this title?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        ).then(() => {
+          let itemIndex = this.titlesArray.indexOf(index, index)
+          this.titlesArray.splice(index, 1)
+          this.titlesService.update(this.titleObject.id, { titles: JSON.stringify(this.titlesArray) }).subscribe(
+            response => {
+
+            }
+
+          )
+        })
+      }
+    })
+
   }
 }

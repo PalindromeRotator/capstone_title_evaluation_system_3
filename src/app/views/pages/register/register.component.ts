@@ -36,7 +36,13 @@ export class RegisterComponent {
       this.usersService.create(data)
         .subscribe(
           response => {
-            this.router.navigate(['']);
+            Swal.fire({
+              icon: 'success',
+              text: 'Please wait the admin to aprrove your account'
+            }).then(() => {
+              this.router.navigate(['']);
+            })
+
           },
           error => {
             console.log(error)

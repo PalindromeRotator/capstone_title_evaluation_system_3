@@ -70,8 +70,8 @@ export class ViewEntryComponent {
   }
 
   onFileSelected(event: any, index: any): void {
-    console.log(event.target.files[0].type)
-    if (event.target.files[0].type === 'application/pdf') {
+    console.log(event.target.files[0].type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+    if (event.target.files[0].type === 'application/pdf' || event.target.files[0].type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
       const inputElement = event.target as HTMLInputElement;
       if (inputElement.files && inputElement.files.length > 0) {
         if (!inputElement.files[0]) {

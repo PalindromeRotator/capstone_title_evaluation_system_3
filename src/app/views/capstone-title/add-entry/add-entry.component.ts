@@ -45,22 +45,6 @@ export class AddEntryComponent {
     this.titleObject = JSON.parse(this.route.snapshot.paramMap.get('titleData')!)
   }
   onFileSelected(event: any): void {
-    // console.log(event.target.files[0].type)
-    // if (event.target.files[0].type === 'application/pdf') {
-    //   const fileReader = new FileReader();
-    //   fileReader.readAsArrayBuffer(event.target.files[0]);
-
-    //   fileReader.onload = async () => {
-    //     const pdfBlob = new Blob([fileReader.result!], { type: 'application/pdf' });
-    //     console.log('PDF Blob:', pdfBlob);
-    //     this.file = pdfBlob
-    //   };
-    // } else {
-    //   Swal.fire({
-    //     icon: 'error',
-    //     text: 'Invalid file format'
-    //   })
-    // }
     const inputElement = event.target as HTMLInputElement;
     if (inputElement.files && inputElement.files.length > 0) {
       if (!inputElement.files[0]) {
