@@ -41,7 +41,7 @@ const PORT_TITLES = process.env.PORT_TITLES;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
-app.listen(PORT_TITLES, () => {
-    console.log(`Server is running on port ${PORT_TITLES}.`);
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`);
 });
 module.exports = app
