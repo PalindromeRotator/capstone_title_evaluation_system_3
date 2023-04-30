@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Titles } from '../models/titles';
 
 
-const baseUrl = 'http://localhost:8082/api/titles';
+const baseUrl = 'https://capstone-title-evaluation-system-3.vercel.app/api/titles';
 
 @Injectable({
   providedIn: 'root'

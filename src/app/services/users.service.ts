@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Users } from '../models/users';
 
-const baseUrl = 'http://localhost:8080/api/users';
+const baseUrl = 'https://capstone-title-evaluation-system-3.vercel.app/api/users';
 
 @Injectable({
   providedIn: 'root'
